@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/provider/theme-provider";
 import SessionProviders from "@/provider/session-provider";
+import { Header } from "@/modules/home/ui/components/header";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -14,8 +15,8 @@ export const metadata: Metadata = {
   title: "Public Messages ",
   description: "Connect to the world",
   icons: {
-    icon : 'vercel.svg'
-  }
+    icon: "vercel.svg",
+  },
 };
 
 export default function RootLayout({
@@ -32,7 +33,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SessionProviders>{children}</SessionProviders>
+          <SessionProviders>
+            {children}</SessionProviders>
         </ThemeProvider>
       </body>
     </html>
