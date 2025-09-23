@@ -4,7 +4,9 @@ import bcryptjs from "bcryptjs";
 import { signUpSchema } from "@/schema";
 import * as z from "zod";
 import sendMail from "@/mail/mail";
-import { ApiResponse } from "@/types/types";
+
+export const runtime = "nodejs";
+
 
 export async function POST(req: Request) {
   try {
