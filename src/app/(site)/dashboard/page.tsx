@@ -1,11 +1,14 @@
-import React from 'react'
+"use client";
+import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
+import React from "react";
 
 const Page = () => {
   return (
     <div>
-      
+      <Button onClick={() => signOut()}>sign in</Button>
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

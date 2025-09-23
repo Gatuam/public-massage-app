@@ -1,27 +1,31 @@
-import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-
-const isPublicRoute = [
-  "/sign-in(.*)",
-  "/sign-up(.*)",
-  "/",
-  "/api(.*)",
-  "/pricing(.*)",
-];
+import { NextResponse, NextRequest } from 'next/server';
+import { getToken } from 'next-auth/jwt';
 
 export async function middleware(request: NextRequest) {
-    const token = request.cookies
-    if(!token) return NextResponse.redirect(new URL("/", request.url));
+  const token = await getToken({ req: request });
+  const url = request.nextUrl;
+
+
+  if (token && (
+      url.pathname.startsWith('/sign-in') ||
+      url.pathname.startsWith('/sign-up') ||
+      url.pathname.startsWith('/verify')
+  )) {
+    return NextResponse.redirect(new URL('/dashboard', request.url));
+  }
+
+  if (!token && url.pathname.startsWith('/dashboard')) {
+    return NextResponse.redirect(new URL('/sign-in', request.url));
+  }
 
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    // Always run for API routes
-    "/(api|trpc)(.*)",
-  ],
+    '/sign-in',
+    '/sign-up',
+    '/dashboard/:path*',
+    '/verify/:path*',
+    '/'
+  ]
 };
