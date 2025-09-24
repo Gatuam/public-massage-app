@@ -2,10 +2,13 @@ import React from "react";
 import FlowLine from "./flow-line";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { OrbitCard } from "./card";
+import { Features } from "./feature";
+import { Lamp } from "./lamp";
 
 export const Hero = () => {
   return (
-    <section className=" pt-36 md:pt-32 py-5 gap-y-5">
+    <section className=" pt-46 md:pt-32 py-5 gap-y-5">
       <div className="  py-2  flex flex-col gap-y-10  md:gap-y-22 justify-center items-center ">
         <div className=" flex flex-col gap-y-6 justify-center items-center text-center">
           <h1 className=" md:text-8xl text-5xl tracking-tight font-semibold text-center md:leading-27 leading-13 ">
@@ -36,20 +39,27 @@ export const Hero = () => {
               width={960}
               height={500}
             />
-             <div className="absolute inset-0 top-20 bg-gradient-to-b from-primary-foreground/0 to-primary-foreground"></div>
+            <div className="absolute inset-0 top-20 bg-gradient-to-b from-primary-foreground/0 to-primary-foreground"></div>
           </div>
         </div>
 
-        <div className=" pt-5 md:pt-9">
-           <div className="relative inline-block border border-primary md:px-6 md:py-4 px-3 py-1 ">
-        {/* Corner handles */}
-        <span className="absolute -top-1 -left-1 h-2 w-2 bg-chart-2"></span>
-        <span className="absolute -top-1 -right-1 h-2 w-2 bg-chart-2"></span>
-        <span className="absolute -bottom-1 -left-1 h-2 w-2 bg-chart-2"></span>
-        <span className="absolute -bottom-1 -right-1 h-2 w-2 bg-chart-2"></span>
+        <div className=" pt-15 md:pt-7 flex flex-col gap-4 justify-center items-center gap-y-11">
+          <div className="relative inline-block border border-primary md:px-6 md:py-4 px-3 py-1 ">
+            {/* Corner handles */}
+            <span className="absolute -top-1 -left-1 h-2 w-2 bg-chart-2"></span>
+            <span className="absolute -top-1 -right-1 h-2 w-2 bg-chart-2"></span>
+            <span className="absolute -bottom-1 -left-1 h-2 w-2 bg-chart-2"></span>
+            <span className="absolute -bottom-1 -right-1 h-2 w-2 bg-chart-2"></span>
 
-        <h1 className="md:text-4xl text-md text-center text-muted-foreground font-bold">Connect Without Limits</h1>
-      </div>
+            <h1 className="md:text-4xl text-md text-center text-muted-foreground font-bold">
+              Connect Without Limits
+            </h1>
+          </div>
+          <OrbitCard />
+        </div>
+        <div>
+          <Features />
+          <Lamp />
         </div>
       </div>
     </section>
