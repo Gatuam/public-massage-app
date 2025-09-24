@@ -7,7 +7,7 @@ const SimpleAnimatedCard = () => {
 
   return (
     <div 
-      className="relative w-93 h-96 bg-gradient-to-br from-background to-muted rounded-3xl shadow-2xl overflow-hidden border border-primary/10 cursor-pointer transition-all duration-300 hover:shadow-3xl hover:scale-105"
+      className="relative w-89 h-96 bg-gradient-to-br from-background to-muted rounded-3xl shadow-2xl overflow-hidden border border-primary/10 cursor-pointer transition-all duration-300 hover:shadow-3xl hover:scale-105"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

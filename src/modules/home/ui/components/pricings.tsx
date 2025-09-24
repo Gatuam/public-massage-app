@@ -78,7 +78,7 @@ export const Pricing = () => {
       </div>
 
 <div className=" w-full flex justify-center items-center md:mt-9 px-4 ">
-     <div className="grid md:grid-cols-3 gap-8 px-6 w-full relative z-10">
+     <div className="grid md:grid-cols-3 gap-8 px-6 w-full relative z-10 ">
         {plans.map((plan, i) => {
           const IconComponent = plan.icon;
           return (

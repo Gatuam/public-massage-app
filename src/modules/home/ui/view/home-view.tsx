@@ -11,7 +11,7 @@ import { Pricing } from "../components/pricings";
 
 export const Hero = () => {
   return (
-    <section className=" pt-46 md:pt-32 py-5 gap-y-5 max-w-screen">
+    <section className=" pt-46 md:pt-32 py-5 gap-y-5  px-0.8">
       <div className="  py-2  flex flex-col gap-y-10  md:gap-y-22 justify-center items-center ">
         <div className=" flex flex-col gap-y-6 justify-center items-center text-center">
           <h1 className=" md:text-8xl text-5xl tracking-tight font-semibold text-center md:leading-27 leading-13 ">
@@ -75,7 +75,7 @@ export const Hero = () => {
                   Easy to use!
                 </h1>
               </div>
-              <div className=" flex flex-col md:flex-row md:flex-wrap justify-center items-center in-focus-within: gap-5 !px-2">
+              <div className=" flex flex-col md:flex-row md:flex-wrap justify-center items-center in-focus-within: gap-5 !px-6">
                 <ConcentricCirclesCard />
                 <CreativeAnimatedCard />
                 <SimpleAnimatedCard />

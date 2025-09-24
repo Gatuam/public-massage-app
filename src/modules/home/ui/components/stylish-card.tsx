@@ -27,7 +27,7 @@ const CreativeAnimatedCard = () => {
   }, []);
 
   return (
-    <div className="relative w-93 h-96 perspective-1000">
+    <div className="relative w-89 h-96 perspective-1000">
       {/* Main card container */}
       <div
         className={`relative w-full h-full bg-gradient-to-br from-background via-muted/50 to-primary/5 rounded-3xl shadow-2xl overflow-hidden border border-primary/20 backdrop-blur-sm transition-all duration-700 ${

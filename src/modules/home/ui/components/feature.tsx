@@ -33,7 +33,7 @@ export const Features = () => {
         </h1>
       </div>
       <div className="relative flex flex-col md:flex-row md:flex-wrap justify-center items-center gap-5 px-6">
-        <div className="absolute top-1/2 left-1/2 md:w-100 w-50 h-50 md:h-100 bg-gradient-to-b from-primary/40 to-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute px-4 top-1/2 left-1/2 md:w-100 !w-40 h-50 md:h-100 bg-gradient-to-b from-primary/40 to-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
         {features.map((f, i) => (
           <div
             key={i}
