@@ -20,8 +20,8 @@ interface Props {
 
 export const SheetMobile = ({ open, setOpen }: Props) => {
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetContent side="left">
+    <Sheet open={open} onOpenChange={setOpen} >
+      <SheetContent side="left" >
         <SheetHeader className=" space-y-5">
           <SheetTitle>
             <Link

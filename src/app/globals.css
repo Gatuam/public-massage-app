@@ -167,6 +167,8 @@
 
   body {
     font-family: var(--font-poppins), sans-serif;
+    width: 100%;
+    overflow-x: hidden;
   }
 
 ::selection {
@@ -212,3 +214,16 @@
 button{
   cursor: pointer;
 }
+
+
+@keyframes gradient-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-border {
+  animation: gradient-border 3s linear infinite;
+  border-radius: 0.375rem; /* match your element rounded if any */
+}
+

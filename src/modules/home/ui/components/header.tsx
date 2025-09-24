@@ -7,6 +7,7 @@ import { SheetMobile } from "./sheet";
 import { nav } from "@/const";
 import { MenuIcon } from "lucide-react";
 import { ModeToggle } from "@/components/global/mode-toggle";
+import { SheetTrigger } from "@/components/ui/sheet";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -15,8 +16,16 @@ export const Header = () => {
     <div className=" w-full  flex bg-primary-foreground/10 backdrop-blur-lg border-b border-accent-foreground/30 inset-0 fixed z-50 py-10 h-9 lg:px-4 px-2  ">
       <div className=" max-w-screen-2xl mx-auto flex w-full justify-between items-center px-1 gap-x-6 ">
         <Link className=" flex justify-center items-center gap-2" href={"/"}>
-          <Image className=" size-9 md:13" src={"/vercel.svg"} alt="logo" width={40} height={50} />
-          <h1 className="text-2xl md:text-3xl  font-bold drop-shadow-2xl ">Orbit</h1>
+          <Image
+            className=" size-9 md:13"
+            src={"/vercel.svg"}
+            alt="logo"
+            width={40}
+            height={50}
+          />
+          <h1 className="text-2xl md:text-3xl  font-bold drop-shadow-2xl ">
+            Orbit
+          </h1>
         </Link>
 
         <div className=" flex-1 hidden md:flex ">
@@ -26,7 +35,7 @@ export const Header = () => {
                 variant={"ghost"}
                 asChild
                 key={ele.id}
-                className=" border border-accent-foreground/10 bg-accent-foreground/10"
+                className=" border border-accent-foreground/5 bg-accent-foreground/5"
               >
                 <Link href={ele.href}>
                   <ele.icon />
@@ -41,20 +50,22 @@ export const Header = () => {
           <Button
             onClick={() => setOpen((pre) => !pre)}
             variant={"ghost"}
-            className="h-8 bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl text-accent" 
+            className="h-8 bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl text-accent"
           >
             Menu
-            <SheetMobile open={open} setOpen={setOpen} />
           </Button>
+          <SheetMobile open={open} setOpen={setOpen} />
         </div>
 
         <div className=" flex  justify-center items-center gap-2">
-          <Button className=" hidden md:block bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl" size={"sm"}>
+          <Button
+            className=" hidden md:block bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl"
+            size={"sm"}
+          >
             Sign Out
           </Button>
-        <ModeToggle/>
+          <ModeToggle />
         </div>
-        
       </div>
     </div>
   );
