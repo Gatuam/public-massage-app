@@ -14,7 +14,7 @@ export const Header = () => {
 
   return (
     <div className=" w-full  flex bg-primary-foreground/10 backdrop-blur-lg border-b border-accent-foreground/30 inset-0 fixed z-50 py-10 h-9 lg:px-4 px-2  ">
-      <div className=" max-w-screen-2xl mx-auto flex w-full justify-between items-center px-1 gap-x-6 ">
+      <div className=" max-w-7xl mx-auto flex w-full justify-between items-center px-1 gap-x-6 ">
         <Link className=" flex justify-center items-center gap-2" href={"/"}>
           <Image
             className=" size-9 md:13"
@@ -29,7 +29,7 @@ export const Header = () => {
         </Link>
 
         <div className=" flex-1 hidden md:flex ">
-          <nav className=" flex w-full justify-center items-center gap-x-4">
+          <nav className=" flex w-full justify-center items-center gap-x-6">
             {nav.map((ele, i) => (
               <Button
                 variant={"ghost"}

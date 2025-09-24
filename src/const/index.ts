@@ -19,12 +19,6 @@ export  const nav = [
       href: "/settings",
       icon: Settings,
     },
-    {
-      id: "Blog",
-      label: "Blog",
-      href: "/blog",
-      icon: BookOpen,
-    },
   ];
 
   export const orbitCards = [

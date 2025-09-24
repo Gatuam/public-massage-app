@@ -19,7 +19,7 @@ export const OrbitCard = () => {
         <Card
           key={i}
           className={`flex  flex-col w-80 gap-y-5 border border-accent-foreground/20 ${
-            i === 1 && " border-2 border-chart-2 animate-pulse drop-shadow-2xl"
+            i === 1 && " border-2 border-chart-2  drop-shadow-2xl"
           } `}
         >
           <CardHeader>
@@ -44,7 +44,7 @@ export const OrbitCard = () => {
             </div>
           </CardFooter>
           <CardFooter className=" w-full flex flex-col justify-center border-t border-primary/80 gap-2">
-            <div className=" rounded-full border border-chart-2/40 p-1">
+            <div className=" rounded-full border border-chart-2/40 p-1 animate-pulse">
               <Button className="bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl rounded-full !p-0 size-9">
                 {ele.icon}
               </Button>
