@@ -1,4 +1,5 @@
 import { dbConnect } from "@/db";
+import sendMail from "@/mail/mail";
 import { UserModel } from "@/model/user";
 import { NextRequest, NextResponse } from "next/server";
 
