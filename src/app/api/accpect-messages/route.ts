@@ -91,5 +91,13 @@ export async function GET(req: Request) {
       },
       { status: 200 }
     );
-  } catch (error) {}
+  } catch (error) {
+    return NextResponse.json(
+      {
+        sucess: false,
+        message: "Error in getting status" + error,
+      },
+      { status: 500 }
+    );
+  }
 }
