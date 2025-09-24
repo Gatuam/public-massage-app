@@ -28,8 +28,8 @@ export async function GET(req: Request) {
       { $group: { _id: "$_id", message: { $push: "message" } } },
     ]);
 
-    if(!users || users.length === 0 ){
-         return NextResponse.json(
+    if (!users || users.length === 0) {
+      return NextResponse.json(
         {
           sucess: false,
           message: " User Not Found",
@@ -38,19 +38,19 @@ export async function GET(req: Request) {
       );
     }
     return NextResponse.json(
-        {
-          sucess: true,
-          message: users[0].message,
-        },
-        { status: 200 }
-      );
+      {
+        sucess: true,
+        message: users[0].message,
+      },
+      { status: 200 }
+    );
   } catch (error) {
     return NextResponse.json(
-        {
-          sucess: false,
-          message: " User Not Found",
-        },
-        { status: 500 }
-      );
+      {
+        sucess: false,
+        message: "Server error",
+      },
+      { status: 500 }
+    );
   }
 }

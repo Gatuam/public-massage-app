@@ -38,7 +38,7 @@ export const OrbitCard = () => {
                   className=" text-xs flex gap-2 text-accent-foreground/60"
                   key={i}
                 >
-                  <Orbit className=" size-4" /> {feature}
+                  <Orbit className=" size-4 animate-spin" /> {feature}
                 </p>
               ))}
             </div>

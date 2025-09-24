@@ -5,7 +5,7 @@ import { UserModel } from "@/model/user";
 import { NextResponse } from "next/server";
 import { User } from "next-auth";
 
-export async function PSOT(req: Request) {
+export async function POST(req: Request) {
   try {
     await dbConnect();
     const session = await getServerSession(authOptions);
