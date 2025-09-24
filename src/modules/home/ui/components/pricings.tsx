@@ -72,7 +72,7 @@ export const Pricing = () => {
         <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
           Choose Your Plan
         </h2>
-        <p className="text-sm md:text-lg text-muted-foreground max-w-xl px-2 ">
+        <p className="text-sm md:text-lg text-muted-foreground max-w-sm text-center px-2 ">
           Start free and upgrade when you're ready. No hidden fees, cancel anytime.
         </p>
       </div>
@@ -86,7 +86,7 @@ export const Pricing = () => {
               key={i}
               className={`relative p-8 rounded-3xl border shadow-lg flex flex-col gap-6 transition-all duration-500 cursor-pointer group ${
                 plan.highlight 
-                  ? "border-primary/30 bg-gradient-to-b from-background to-primary/5 hover:shadow-2xl hover:shadow-primary/20 scale-105 md:scale-110 text-accent-foreground" 
+                  ? "border-primary/30 bg-gradient-to-b from-background to-primary/5 hover:shadow-2xl hover:shadow-primary/20 scale-101 md:scale-110 text-accent-foreground" 
                   : "border-border/50 bg-background/50 backdrop-blur-sm hover:shadow-xl hover:border-border"
               } ${
                 hoveredPlan === i ? "transform hover:scale-105" : ""
@@ -148,9 +148,9 @@ export const Pricing = () => {
 
                 {/* CTA Button */}
                 <Button
-                  className={`w-full h-12 text-base font-semibold transition-all duration-300 ${
+                  className={`w-full h-10 text-base font-semibold transition-all duration-300 ${
                     plan.highlight
-                      ? "bg-gradient-to-r from-primary to-chart-3 hover:from-primary/90 hover:to-chart-3/90 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/25"
+                      ? "bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl hover:from-primary/90 hover:to-chart-3/90 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/25"
                       : "bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground"
                   } ${
                     hoveredPlan === i ? "transform scale-105" : ""

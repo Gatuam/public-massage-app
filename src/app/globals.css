@@ -167,7 +167,7 @@
 
   body {
     font-family: var(--font-poppins), sans-serif;
-    width: 100%;
+    width: 100vw;
     overflow-x: hidden;
   }
 

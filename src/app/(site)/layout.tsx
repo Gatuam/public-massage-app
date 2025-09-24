@@ -3,7 +3,7 @@ import React from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className=" relative">
+    <div className=" relative  max-w-screen-xl overflow-x-hidden ">
       <div
         className=" absolute top-0 z-[-2] h-full w-screen
     bg-[radial-gradient(#00000033_1px,transparent_1px)] 
@@ -13,7 +13,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       ></div>
 
       <Header />
-      <main className=" max-w-screen-xl mx-auto">{children}</main>
+      <main className="w-full mx-auto">{children}</main>
     </div>
   );
 };

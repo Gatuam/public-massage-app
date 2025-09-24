@@ -7,7 +7,7 @@ const ConcentricCirclesCard = () => {
 
   return (
     <div
-      className="relative w-96 h-96 bg-gradient-to-br from-background to-muted rounded-3xl shadow-2xl overflow-hidden border border-primary/10 group cursor-pointer"
+      className="relative w-93 h-96 bg-gradient-to-br from-background to-muted rounded-3xl shadow-2xl overflow-hidden border border-primary/10 group cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

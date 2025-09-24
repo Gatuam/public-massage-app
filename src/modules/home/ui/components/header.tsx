@@ -13,7 +13,7 @@ export const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className=" w-full  flex bg-primary-foreground/10 backdrop-blur-lg border-b border-accent-foreground/30 inset-0 fixed z-50 py-10 h-9 lg:px-4 px-2  ">
+    <div className=" w-full  flex bg-primary-foreground/10 max-w-screen backdrop-blur-lg border-b border-accent-foreground/30 inset-0 fixed z-50 py-10 h-9 lg:px-4 px-2  ">
       <div className=" max-w-7xl mx-auto flex w-full justify-between items-center px-1 gap-x-6 ">
         <Link className=" flex justify-center items-center gap-2" href={"/"}>
           <Image

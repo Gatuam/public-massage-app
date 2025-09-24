@@ -75,7 +75,7 @@ export const Hero = () => {
                   Easy to use!
                 </h1>
               </div>
-              <div className=" flex flex-col md:flex-row md:flex-wrap justify-center in-focus-within: gap-5">
+              <div className=" flex flex-col md:flex-row md:flex-wrap justify-center items-center in-focus-within: gap-5 !px-2">
                 <ConcentricCirclesCard />
                 <CreativeAnimatedCard />
                 <SimpleAnimatedCard />
