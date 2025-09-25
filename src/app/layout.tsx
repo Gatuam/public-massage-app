@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/provider/theme-provider";
 import SessionProviders from "@/provider/session-provider";
 import { Header } from "@/modules/home/ui/components/header";
+import QueryProviders from "@/provider/query-provider";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -34,7 +36,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SessionProviders>
-            {children}</SessionProviders>
+            <QueryProviders>
+              {children}
+              <Toaster/>
+              </QueryProviders>
+          </SessionProviders>
         </ThemeProvider>
       </body>
     </html>

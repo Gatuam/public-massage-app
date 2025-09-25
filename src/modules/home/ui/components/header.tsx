@@ -8,6 +8,7 @@ import { nav } from "@/const";
 import { MenuIcon } from "lucide-react";
 import { ModeToggle } from "@/components/global/mode-toggle";
 import { SheetTrigger } from "@/components/ui/sheet";
+import { signOut } from "next-auth/react";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -59,6 +60,9 @@ export const Header = () => {
 
         <div className=" flex  justify-center items-center gap-2">
           <Button
+          onClick={()=> {
+            signOut()
+          }}
             className=" hidden md:block bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl"
             size={"sm"}
           >
