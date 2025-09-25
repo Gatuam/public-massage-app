@@ -36,7 +36,7 @@ export const Header = () => {
                 variant={"ghost"}
                 asChild
                 key={ele.id}
-                className=" border border-accent-foreground/5 bg-accent-foreground/5"
+                className=" h-8 border border-accent-foreground/5 bg-accent-foreground/5"
               >
                 <Link href={ele.href}>
                   <ele.icon />

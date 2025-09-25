@@ -1,12 +1,11 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { signOut } from "next-auth/react";
 import React from "react";
 
-const Page = () => {
+
+const Page = async () => {
+  
   return (
-    <div>
-      <Button onClick={() => signOut()}>sign in</Button>
+    <div className=" pt-26 px-4 md:pt-32">
+       hi
     </div>
   );
 };

@@ -23,6 +23,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { Loader } from "lucide-react";
 
 export function SignInForm() {
   const route = useRouter();
@@ -110,7 +111,9 @@ export function SignInForm() {
           {success && <FormSuccess message={success} />}
           <Button 
            disabled={mutation.isPending}
-          type="submit">Submit</Button>
+          type="submit">
+            { mutation.isPending  ? <Loader className=" animate-spin"/> : 'Submit'}
+          </Button>
         </div>
       </form>
     </Form>

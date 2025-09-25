@@ -2,15 +2,15 @@ import { BookOpen, MessageCircle, Settings, User } from "lucide-react";
 
 export  const nav = [
     {
-      id: "Profile",
-      label: "Profile",
-      href: "/",
+      id: "Dashboard",
+      label: "Dashboard",
+      href: "/dashboard",
       icon: User,
     },
     {
       id: "Message",
       label: "Message",
-      href: "/products",
+      href: "/messages",
       icon: MessageCircle,
     },
     {

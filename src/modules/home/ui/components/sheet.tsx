@@ -9,6 +9,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { nav } from "@/const";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 
 import React from "react";
@@ -20,8 +21,8 @@ interface Props {
 
 export const SheetMobile = ({ open, setOpen }: Props) => {
   return (
-    <Sheet open={open} onOpenChange={setOpen} >
-      <SheetContent side="left" >
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetContent side="left">
         <SheetHeader className=" space-y-5">
           <SheetTitle>
             <Link
@@ -53,7 +54,12 @@ export const SheetMobile = ({ open, setOpen }: Props) => {
         <SheetFooter className=" gap-y-6">
           <Separator className=" bg-accent-foreground/40" />
           <div className=" w-full">
-            <Button className=" relative w-full bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl">
+            <Button
+              onClick={() => {
+                signOut();
+              }}
+              className=" relative w-full bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl"
+            >
               Signout
             </Button>
           </div>

@@ -22,6 +22,7 @@ import { QueryClient, useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Loader } from "lucide-react";
 
 export function VerifyForm() {
   const route = useRouter();
@@ -74,8 +75,11 @@ export function VerifyForm() {
                 <FormLabel>Password</FormLabel>
                 <FormControl>
                   <Input
-                  disabled={mutation.isPending}
-                  type="text" placeholder="1234" {...field} />
+                    disabled={mutation.isPending}
+                    type="text"
+                    placeholder="1234"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -85,9 +89,13 @@ export function VerifyForm() {
         <div className=" flex flex-col gap-y-3">
           {error && <FormError message={error} />}
           {success && <FormSuccess message={success} />}
-          <Button
-           disabled={mutation.isPending}
-          type="submit">Submit</Button>
+          <Button disabled={mutation.isPending} type="submit">
+            {mutation.isPending ? (
+              <Loader className=" animate-spin" />
+            ) : (
+              "Submit"
+            )}
+          </Button>
         </div>
       </form>
     </Form>
