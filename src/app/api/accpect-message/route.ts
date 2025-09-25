@@ -59,7 +59,9 @@ export async function GET(req: Request) {
     await dbConnect();
     const session = await getServerSession(authOptions);
     const user = session?.user as User;
-    if (!user || !session) {
+    console.log(session)
+    console.log(user)
+    if (!user || !session?.user) {
       return NextResponse.json(
         {
           sucess: false,
@@ -68,10 +70,10 @@ export async function GET(req: Request) {
         { status: 400 }
       );
     }
-    const userId = user?.id;
+    const userId = user?._id;
 
     const userFound = await UserModel.findById({
-      userId: userId,
+     _id : userId,
     });
 
     if (!userFound) {
@@ -87,15 +89,15 @@ export async function GET(req: Request) {
     return NextResponse.json(
       {
         success: true,
-        isAccpectingMessage: userFound.isAccpectionMessage,
+        isAccpectionMessage: userFound.isAccpectionMessage,
       },
       { status: 200 }
     );
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         sucess: false,
-        message: "Error in getting status" + error,
+        message: "Error in getting status" + error.message,
       },
       { status: 500 }
     );

@@ -2,6 +2,6 @@ import { Message } from "@/model/user";
 export interface ApiResponse {
   success: boolean;
   message: string;
-  isAccpectingMessage?: boolean;
+  isAccpectionMessage?: boolean;
   messages?: Array<Message>;
 }

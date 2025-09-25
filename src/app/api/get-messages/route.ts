@@ -10,17 +10,20 @@ export async function GET(req: Request) {
     await dbConnect();
     const session = await getServerSession(authOptions);
     const user = session?.user as User;
+
     if (!user || !session) {
       return NextResponse.json(
         {
-          sucess: false,
+          success: false,
           message: "Not authenticated",
         },
-        { status: 400 }
+        { status: 401 }
       );
     }
-    const userId = new mongoose.Types.ObjectId(user?.id);
 
+    const userId = new mongoose.Types.ObjectId(user._id || user.id);
+
+    console.log("getmessage user", user, userId);
     const users = await UserModel.aggregate([
       { $match: { _id: userId } },
       { $unwind: "$message" },
@@ -31,23 +34,25 @@ export async function GET(req: Request) {
     if (!users || users.length === 0) {
       return NextResponse.json(
         {
-          sucess: false,
-          message: " User Not Found",
+          success: false,
+          message: "User not found",
         },
         { status: 404 }
       );
     }
+
     return NextResponse.json(
       {
-        sucess: true,
-        message: users[0].message,
+        success: true,
+        messages: users[0].message,
       },
       { status: 200 }
     );
   } catch (error) {
+    console.error("GET /api/get-message error:", error);
     return NextResponse.json(
       {
-        sucess: false,
+        success: false,
         message: "Server error",
       },
       { status: 500 }

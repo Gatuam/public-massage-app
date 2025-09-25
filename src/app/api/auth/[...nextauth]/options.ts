@@ -4,7 +4,7 @@ import { UserModel } from "@/model/user";
 import { NextResponse } from "next/server";
 import { dbConnect } from "@/db";
 import bcrypt from "bcryptjs";
-import { Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -41,11 +41,13 @@ export const authOptions: NextAuthOptions = {
             throw new Error("Invalid credential");
           }
           return {
-            id: (existingUser._id as Types.ObjectId).toString(),
+            _id: (existingUser._id as mongoose.Types.ObjectId).toString(),
+            id: (existingUser._id as mongoose.Types.ObjectId).toString(),
             email: existingUser.email,
             username: existingUser.username,
-            isAccpectingMessage: existingUser.isAccpectionMessage,
-            isVerified: existingUser.isVerfied,
+            name: existingUser.username,
+            isAccpectionMessage: existingUser.isAccpectionMessage,
+            isVerified: existingUser.isVerfied
           };
         } catch (error: any) {
           throw new Error("Server error while sign-in", error);
@@ -63,8 +65,8 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async session({ session, token }) {
       if (token) {
-        session.user.isAccpectingMessage = token.isAccpectingMessage;
-        session.user.id = token.id?.toString();
+        session.user.isAccpectionMessage = token.isAccpectionMessage;
+        session.user._id = token._id?.toString();
         session.user.email = token.email;
         session.user.username = token.username;
         session.user.isVerified = token.isVerified;
@@ -73,10 +75,10 @@ export const authOptions: NextAuthOptions = {
     },
     async jwt({ token, user }) {
       if (user) {
-        token._id = user.id;
+        token._id = user._id;
         token.email = user.email;
         token.username = user.username;
-        token.isAccpectinMessage = user.isAccpectingMessage;
+        token.isAccpectionMessage = user.isAccpectionMessage;
         token.isVerified = user.isVerified;
       }
       return token;

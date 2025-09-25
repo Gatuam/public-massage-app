@@ -12,15 +12,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Message } from "@/model/user";
 
-export type Payment = {
-  id?: string;
-  amount?: number;
-  status?: "pending" | "processing" | "success" | "failed";
-  email?: string;
-};
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Message>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
