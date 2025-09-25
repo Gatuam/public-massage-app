@@ -14,13 +14,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Message } from "@/model/user";
 
-
 export const columns: ColumnDef<Message>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
-
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -32,10 +29,9 @@ export const columns: ColumnDef<Message>[] = [
           <DropdownMenuContent align="center">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-            onClick={()=> {}}
-            className=" text-destructive"
-            >Delete Message</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {}} className=" text-destructive">
+              Delete Message
+            </DropdownMenuItem>
             <DropdownMenuItem>View Detail</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

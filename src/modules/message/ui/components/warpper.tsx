@@ -1,7 +1,4 @@
 "use client";
-import React, { useCallback, useState } from "react";
-import { DataTable } from "../components/data-table";
-import { columns } from "../components/coloms";
 import {
   Card,
   CardAction,
@@ -16,6 +13,8 @@ import { ApiResponse } from "@/types/types";
 import { toast } from "sonner";
 import { useQuery } from "@tanstack/react-query";
 import { Message } from "@/model/user";
+import { DataTable } from "./data-table";
+import { columns } from "./coloms";
 
 export const Warpper = () => {
   const fetchMessages = async () => {

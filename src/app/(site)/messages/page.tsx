@@ -1,7 +1,6 @@
 'use client'
 
 import React from "react";
-import { columns, Payment } from "@/modules/message/ui/components/coloms";
 import { DataTable } from "@/modules/message/ui/components/data-table";
 import { MessageView } from "@/modules/message/ui/view/message-view";
 
