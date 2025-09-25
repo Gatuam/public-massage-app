@@ -51,7 +51,7 @@ export function SignUpForm() {
       toast.success("Signup successfully Check email to verify");
       setSuccess(data?.message);
       setError(undefined);
-      route.push('/verify-code')
+      route.push("/verify-code");
     },
     onError: (error: any) => {
       const message =
@@ -77,7 +77,12 @@ export function SignUpForm() {
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
-                  <Input type="John" placeholder="john" {...field} />
+                  <Input
+                    disabled={mutation.isPending}
+                    type="John"
+                    placeholder="john"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -90,7 +95,12 @@ export function SignUpForm() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="john@gmail.com" {...field} />
+                  <Input
+                    disabled={mutation.isPending}
+                    type="email"
+                    placeholder="john@gmail.com"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -103,7 +113,12 @@ export function SignUpForm() {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="********" {...field} />
+                  <Input
+                    disabled={mutation.isPending}
+                    type="password"
+                    placeholder="********"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -113,7 +128,9 @@ export function SignUpForm() {
         <div className=" flex flex-col gap-y-3">
           {error && <FormError message={error} />}
           {success && <FormSuccess message={success} />}
-          <Button type="submit">Submit</Button>
+          <Button disabled={mutation.isPending} type="submit">
+            Submit
+          </Button>
         </div>
       </form>
     </Form>

@@ -53,14 +53,14 @@ export function SignInForm() {
       return res;
     },
     onSuccess: (data) => {
-      toast.success("Signup successfully Check email to verify");
+      toast.success("Signin successfully!");
       setSuccess("Signed in successfully!");
       setError(undefined);
       route.push("/");
     },
     onError: (error: any) => {
       const message = error.message || "Something went wrong. Try again.";
-      toast.error("SignUp failed: " + message);
+      toast.error("SignIn failed: " + message);
       setError(message);
       setSuccess(undefined);
     },
@@ -81,7 +81,9 @@ export function SignInForm() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="john@gmail.com" {...field} />
+                  <Input 
+                   disabled={mutation.isPending}
+                  type="email" placeholder="john@gmail.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -94,7 +96,9 @@ export function SignInForm() {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="********" {...field} />
+                  <Input 
+                   disabled={mutation.isPending}
+                  type="password" placeholder="********" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -104,7 +108,9 @@ export function SignInForm() {
         <div className=" flex flex-col gap-y-3">
           {error && <FormError message={error} />}
           {success && <FormSuccess message={success} />}
-          <Button type="submit">Submit</Button>
+          <Button 
+           disabled={mutation.isPending}
+          type="submit">Submit</Button>
         </div>
       </form>
     </Form>

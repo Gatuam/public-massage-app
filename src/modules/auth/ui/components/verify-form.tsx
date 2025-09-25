@@ -52,7 +52,7 @@ export function VerifyForm() {
     onError: (error: any) => {
       const message =
         error.response?.data?.message || "Something went wrong. Try again.";
-      toast.error("SignUp failed: " + message);
+      toast.error("Invalid code: " + message);
       setError(message);
       setSuccess(undefined);
     },
@@ -73,7 +73,9 @@ export function VerifyForm() {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input type="text" placeholder="1234" {...field} />
+                  <Input
+                  disabled={mutation.isPending}
+                  type="text" placeholder="1234" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -83,7 +85,9 @@ export function VerifyForm() {
         <div className=" flex flex-col gap-y-3">
           {error && <FormError message={error} />}
           {success && <FormSuccess message={success} />}
-          <Button type="submit">Submit</Button>
+          <Button
+           disabled={mutation.isPending}
+          type="submit">Submit</Button>
         </div>
       </form>
     </Form>
