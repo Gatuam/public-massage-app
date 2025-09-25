@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { OrbitCard } from "../components/orbit-card";
@@ -8,6 +8,7 @@ import CreativeAnimatedCard from "../components/stylish-card";
 import SimpleAnimatedCard from "../components/simple-card";
 import { Orbit } from "lucide-react";
 import { Pricing } from "../components/pricings";
+import { TypewriterText, TypewriterTextAnimate, TypewriterTextGemini } from "../components/type";
 
 export const Hero = () => {
   return (
@@ -75,6 +76,9 @@ export const Hero = () => {
                   Easy to use!
                 </h1>
               </div>
+              <TypewriterText />
+              <TypewriterTextAnimate />
+              
               <div className=" flex flex-col md:flex-row md:flex-wrap justify-center items-center in-focus-within: gap-5 !px-6">
                 <ConcentricCirclesCard />
                 <CreativeAnimatedCard />
@@ -106,9 +110,14 @@ export const Hero = () => {
             <Button className=" h-8 bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl text-accent">
               Get Started Free
             </Button>
+            <TypewriterTextGemini/>
           </div>
         </div>
       </div>
     </section>
   );
 };
+
+
+
+
