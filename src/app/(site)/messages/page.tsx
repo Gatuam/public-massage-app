@@ -8,7 +8,7 @@ import { MessageView } from "@/modules/message/ui/view/message-view";
 
 const Page = () => {
   return (
-    <div className=" pt-26 px-4 md:pt-32">
+    <div className=" pt-34 px-4 md:pt-36">
      <MessageView />
     </div>
   );
