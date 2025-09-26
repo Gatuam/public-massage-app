@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Orbit } from "lucide-react";
+import Link from "next/link";
 
 export const OrbitCard = () => {
   return (
@@ -28,7 +29,7 @@ export const OrbitCard = () => {
           </CardHeader>
           <CardContent>
             <Button className="bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl">
-              {ele.button}
+              <Link href={"/send-message"}>{ele.button}</Link>
             </Button>
           </CardContent>
           <CardFooter>
@@ -49,9 +50,7 @@ export const OrbitCard = () => {
                 {ele.icon}
               </Button>
             </div>
-            <p className=" text-xs text-center">
-                {ele.content}
-            </p>
+            <p className=" text-xs text-center">{ele.content}</p>
           </CardFooter>
         </Card>
       ))}

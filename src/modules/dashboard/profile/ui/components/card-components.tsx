@@ -13,11 +13,36 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedCard } from "./animate-card";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 import { GenAvatarImage } from "./gen-avtar";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { credentailSchema } from "@/schema";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
 export const CardComponents = () => {
   const session = useSession();
+
+  const form = useForm<z.infer<typeof credentailSchema>>({
+    resolver: zodResolver(credentailSchema),
+    defaultValues: {
+      username: session?.data?.user?.username || "",
+      email: session?.data?.user?.email || "",
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof credentailSchema>) {
+    console.log(values);
+  }
+
   return (
     <AnimatedCard>
       <CardHeader className="flex flex-col justify-center items-center mt-3">
@@ -35,28 +60,46 @@ export const CardComponents = () => {
           </div>
         </div>
         <div className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="username" className="text-slate-300">
-              Username
-            </Label>
-            <Input
-              id="username"
-              value={session?.data?.user?.username || "User name"}
-              className="bg-slate-700 border-slate-600 text-white read-only:cursor-default"
-            />
-          </div>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <div className=" space-y-4">
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Username</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={session?.data?.user?.username}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder={session?.data?.user?.email}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="email" className="text-slate-300">
-              Email
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              value={session?.data?.user?.email || "User name"}
-              className="bg-slate-700 border-slate-600 text-white read-only:cursor-default"
-            />
-          </div>
+              <Button type="submit">Submit</Button>
+            </form>
+          </Form>
         </div>
 
         {/* Account Information Section */}

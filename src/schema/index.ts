@@ -30,3 +30,8 @@ export const verifySchema = z.object({
 export const accpectionMessageSchema = z.object({
   accpectMessage: z.boolean(),
 });
+
+export const credentailSchema = z.object({
+  username : userNameSchema,
+  email: z.string(),
+});

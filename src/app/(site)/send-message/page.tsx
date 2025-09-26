@@ -26,7 +26,7 @@ const Page = () => {
               setvalue(e.target.value);
             }}
             placeholder=" what on your mind"
-            className=" !ring-0 resize-none w-full h-full !rounded-lg max-w-xl min-w-xl break-words "
+            className=" !ring-0 resize-none w-full h-full !rounded-lg max-w-xl min-w-xl break-words !bg-background "
           />
           <Button className=" absolute bottom-2 right-2 size-8 rounded-full  bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl ">
             <ArrowUp />

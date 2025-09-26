@@ -8,7 +8,12 @@ import CreativeAnimatedCard from "../components/stylish-card";
 import SimpleAnimatedCard from "../components/simple-card";
 import { Orbit } from "lucide-react";
 import { Pricing } from "../components/pricings";
-import { TypewriterText, TypewriterTextAnimate, TypewriterTextGemini } from "../components/type";
+import {
+  TypewriterText,
+  TypewriterTextAnimate,
+  TypewriterTextGemini,
+} from "../components/type";
+import Link from "next/link";
 
 export const Hero = () => {
   return (
@@ -25,8 +30,8 @@ export const Hero = () => {
             distraction-free.
           </p>
           <div className=" flex gap-x-5 justify-center items-center">
-            <Button className=" h-8 bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl text-accent">
-              Get Started Free
+            <Button className=" h-8 bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl">
+              <Link href={"/send-message"}>Get Started Free</Link>
             </Button>
             <Button className=" h-8" variant={"secondary"}>
               Learn More
@@ -78,7 +83,7 @@ export const Hero = () => {
               </div>
               <TypewriterText />
               <TypewriterTextAnimate />
-              
+
               <div className=" flex flex-col md:flex-row md:flex-wrap justify-center items-center in-focus-within: gap-5 !px-6">
                 <ConcentricCirclesCard />
                 <CreativeAnimatedCard />
@@ -107,17 +112,13 @@ export const Hero = () => {
                 <Orbit className=" text-accent-foreground animate-spin" />
               </h1>
             </div>
-            <Button className=" h-8 bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl text-accent">
-              Get Started Free
+            <Button className=" h-8 bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl">
+              <Link href={"/send-message"}>Get Started Free</Link>
             </Button>
-            <TypewriterTextGemini/>
+            <TypewriterTextGemini />
           </div>
         </div>
       </div>
     </section>
   );
 };
-
-
-
-
