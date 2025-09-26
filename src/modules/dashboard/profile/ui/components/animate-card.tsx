@@ -3,7 +3,7 @@ import { BorderTrail } from './card-animated';
 
 export function AnimatedCard({ children }: { children: React.ReactNode }) {
   return (
-    <Card className="relative overflow-hidden p-4 rounded-lg w-full max-w-xl ">
+    <Card className="relative overflow-hidden p-4 rounded-lg w-full max-w-md bg-gradient-to-r from-background/30 to-secondary/20 backdrop-blur-2xl border border-primary/40 ">
       {children}
 
       {/* Border trail */}
