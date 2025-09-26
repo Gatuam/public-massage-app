@@ -90,10 +90,10 @@ export function TypewriterTextAnimate() {
   return (
     <div className="flex flex-col-reverse md:flex-row items-center gap-4">
       {/* Animated AI Icon */}
-      <div className="relative">
+      <div className="relative p-1">
         <svg
-          width="48"
-          height="48"
+          width="28"
+          height="28"
           viewBox="0 0 48 48"
           className="text-primary"
           fill="currentColor"
@@ -392,7 +392,7 @@ export function TypewriterTextGemini() {
 
       {/* Typewriter text */}
       <div className="flex-1 justify-center items-center text-center">
-        <p className="text-sm md:text-xl font-medium text-gray-700 leading-relaxed">
+        <p className="text-sm !md:text-sm font-medium text-gray-700 leading-relaxed">
           {text}
           <span className="animate-pulse text-primary">|</span>
         </p>

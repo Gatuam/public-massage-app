@@ -31,7 +31,7 @@ const CreativeAnimatedCard = () => {
       {/* Main card container */}
       <div
         className={`relative w-full h-full bg-gradient-to-br from-background via-muted/50 to-primary/5 rounded-3xl shadow-2xl overflow-hidden border border-primary/20 backdrop-blur-sm transition-all duration-700 ${
-          isHovered ? "transform rotate-y-12 scale-105" : ""
+          isHovered ? "transform scale-102" : ""
         }`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}

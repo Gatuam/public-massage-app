@@ -1,23 +1,23 @@
-import { BookOpen, MessageCircle, Settings, User } from "lucide-react";
+import {  MessageCircleCodeIcon, Send, User2 } from "lucide-react";
 
 export  const nav = [
     {
-      id: "Dashboard",
-      label: "Dashboard",
-      href: "/dashboard",
-      icon: User,
+      id: "Send Message",
+      label: "Send Message",
+      href: "/send-message",
+      icon: Send,
     },
     {
       id: "Message",
-      label: "Message",
+      label: "Messages",
       href: "/messages",
-      icon: MessageCircle,
+      icon: MessageCircleCodeIcon,
     },
     {
       id: "Settings",
-      label: "Settings",
-      href: "/settings",
-      icon: Settings,
+      label: "Profile",
+      href: "/profile",
+      icon: User2,
     },
   ];
 
@@ -77,4 +77,23 @@ export const orbitIconCards = [
     subheading: "Your conversations are safe with Orbit. End-to-end encryption and transparent data policies."
   }
 ];
+
+
+
+export const messages = [
+  {
+    id: 1,
+    content: "Reviewed the project. Everything looks good, but let's revise the introduction.",
+  },
+  {
+    id: 2,
+    content: "Reminder: Team meeting tomorrow at 10 AM. Prepare your updates.",
+  },
+  {
+    id: 3,
+    content: "Weekend plan: Hiking Saturday morning, then lunch at the new cafe.",
+  },
+];
+
+
 

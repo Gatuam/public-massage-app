@@ -109,15 +109,19 @@ export const MessageForm = () => {
             control={form.control}
             name="accpectMessage"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className=" flex flex-col justify-center items-center">
                 <FormLabel>Accpect Message</FormLabel>
-                <FormControl>
-                  <Switch
-                    {...register("accpectMessage")}
-                    checked={field.value}
-                    onCheckedChange={()=> switchStatusMutation.mutate()}
-                  />
-                </FormControl>
+                <div className=" flex gap-x-2 justify-center items-center">
+                  <FormControl>
+                    <Switch
+                      {...register("accpectMessage")}
+                      checked={field.value}
+                      onCheckedChange={() => switchStatusMutation.mutate()}
+                    />
+                  </FormControl>
+                  <samp>{accpectMessage ? "on" : "off"}</samp>
+                </div>
+
                 <FormMessage />
               </FormItem>
             )}

@@ -4,8 +4,10 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { Button } from "@/components/ui/button";
 
 import {
   Table,
@@ -15,6 +17,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Loader } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -25,6 +29,7 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const router = useRouter();
   const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
@@ -32,6 +37,7 @@ export function DataTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
     onRowSelectionChange: setRowSelection,
+    getPaginationRowModel: getPaginationRowModel(),
     state: {
       rowSelection,
     },
@@ -80,9 +86,20 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center"
+                  className="h-39 text-center "
                 >
-                  No results.
+                  <div className=" flex flex-col items-center justify-center w-full gap-2">
+                    <span>No messages Created Yet</span>
+                    <Loader className=" animate-spin" />
+                    <Button
+                      onClick={() => {
+                        router.push('/send-message')
+                      }}
+                      className="h-8 bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl z-30"
+                    >
+                      Click Here to create 1st message
+                    </Button>
+                  </div>
                 </TableCell>
               </TableRow>
             )}
@@ -92,6 +109,24 @@ export function DataTable<TData, TValue>({
       <div className="text-muted-foreground flex-1 text-sm mt-3">
         {table.getFilteredSelectedRowModel().rows.length} of{" "}
         {table.getFilteredRowModel().rows.length} row(s) selected.
+      </div>
+      <div className="flex items-center justify-end space-x-2 py-4">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          Previous
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          Next
+        </Button>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/provider/theme-provider";
 import SessionProviders from "@/provider/session-provider";
 import { Header } from "@/modules/home/ui/components/header";
 import QueryProviders from "@/provider/query-provider";
-import { Toaster } from "sonner";
+import { Toaster } from "@/components/ui/sonner"
 
 const poppins = Poppins({
   variable: "--font-poppins",

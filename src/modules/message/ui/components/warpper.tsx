@@ -70,13 +70,13 @@ export const Warpper = () => {
     <div>
       <Card className=" bg-background ">
         <CardHeader>
-          <CardTitle>Your messages data</CardTitle>
+          <CardTitle>All Messages data</CardTitle>
           <CardAction>
             <MessageForm />
           </CardAction>
         </CardHeader>
         <CardContent>
-          <DataTable columns={columns} data={messages} />
+         {<DataTable columns={columns} data={messages} />}
         </CardContent>
         <CardFooter></CardFooter>
       </Card>

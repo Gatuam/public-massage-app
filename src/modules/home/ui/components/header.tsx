@@ -51,7 +51,7 @@ export const Header = () => {
           <Button
             onClick={() => setOpen((pre) => !pre)}
             variant={"ghost"}
-            className="h-8 bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl text-accent"
+            className="h-8 bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl "
           >
             Menu
           </Button>

@@ -25,7 +25,7 @@ const SimpleAnimatedCard = () => {
             key={index}
             className={`absolute rounded-full border-2 transition-all duration-1000 ${
               isHovered 
-                ? 'border-primary/60 scale-110' 
+                ? 'border-primary/60 scale-102' 
                 : 'border-muted-foreground/30'
             }`}
             style={{
@@ -44,7 +44,7 @@ const SimpleAnimatedCard = () => {
         <div className="relative">
           {/* Main center icon */}
           <div className={`w-16 h-16 bg-gradient-to-br from-primary to-chart-1 rounded-2xl shadow-xl flex items-center justify-center transition-all duration-500 ${
-            isHovered ? 'scale-125 rotate-12' : 'scale-100 rotate-0'
+            isHovered ? 'scale-105 rotate-12' : 'scale-100 rotate-0'
           }`}>
             <Orbit className={`w-8 h-8 text-primary-foreground transition-all duration-700 ${
               isHovered ? 'animate-spin' : ' animate-spin'
@@ -88,11 +88,11 @@ const SimpleAnimatedCard = () => {
 
       {/* Simple corner glows */}
       <div className={`absolute top-6 right-6 w-12 h-12 rounded-full blur-xl transition-all duration-500 ${
-        isHovered ? 'bg-primary/30 scale-150' : 'bg-primary/15 scale-100'
+        isHovered ? 'bg-primary/30 scale-105' : 'bg-primary/15 scale-100'
       }`}></div>
       
       <div className={`absolute bottom-6 left-6 w-16 h-16 rounded-full blur-xl transition-all duration-500 ${
-        isHovered ? 'bg-chart-4/30 scale-150' : 'bg-chart-4/15 scale-100'
+        isHovered ? 'bg-chart-4/30 scale-105' : 'bg-chart-4/15 scale-100'
       }`}></div>
 
       {/* Subtle overlay */}
