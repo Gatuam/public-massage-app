@@ -15,8 +15,11 @@ import { useQuery } from "@tanstack/react-query";
 import { Message } from "@/model/user";
 import { DataTable } from "./data-table";
 import { columns } from "./coloms";
+import { Loader } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 export const Warpper = () => {
+  const { data: session } = useSession();
   const fetchMessages = async () => {
     try {
       const res = await axios.get<ApiResponse>("/api/get-messages");
@@ -32,7 +35,6 @@ export const Warpper = () => {
       if (res.data.success && res.data.message) {
         toast.success("Messages loaded successfully");
       }
-      console.log(res);
 
       return res.data.message;
     } catch (error: any) {
@@ -47,6 +49,22 @@ export const Warpper = () => {
     queryFn: fetchMessages,
     refetchOnWindowFocus: false,
   });
+
+  if (!session) {
+    return (
+      <Card className=" justify-center items-center flex flex-col animate-pulse ">
+        <CardHeader className=" justify-center items-center flex flex-col gap-3">
+          <CardTitle>Unauthorized</CardTitle>
+        </CardHeader>
+        <CardContent className=" w-full flex items-center justify-center">
+          Login to check the messages
+        </CardContent>
+        <CardFooter>
+          <Loader className=" animate-spin" />
+        </CardFooter>
+      </Card>
+    );
+  }
 
   return (
     <div>

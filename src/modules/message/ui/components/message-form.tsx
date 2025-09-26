@@ -1,13 +1,11 @@
 "use client";
 import { Message } from "@/model/user";
-import { useSession } from "next-auth/react";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { accpectionMessageSchema } from "@/schema";
 
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -21,7 +19,7 @@ import { Switch } from "@/components/ui/switch";
 import axios from "axios";
 import { toast } from "sonner";
 import { ApiResponse } from "@/types/types";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const MessageForm = () => {
   const queryClient = useQueryClient();
@@ -32,8 +30,6 @@ export const MessageForm = () => {
     setMessages(messages.filter((message) => message._id !== messageId));
   };
 
-  const { data: session } = useSession();
-
   const form = useForm<z.infer<typeof accpectionMessageSchema>>({
     resolver: zodResolver(accpectionMessageSchema),
     defaultValues: {
@@ -41,14 +37,41 @@ export const MessageForm = () => {
     },
   });
 
-  const { formState, register, setValue } = form;
+  const { setValue, register } = form;
   const accpectMessage = form.watch("accpectMessage");
 
   function onSubmit(values: z.infer<typeof accpectionMessageSchema>) {
     console.log(values);
   }
 
-  const fetchData = async () => {
+  const handleSwitchChange = async () => {
+    try {
+      const res = await axios.post<ApiResponse>("/api/accpect-message", {
+        accpectMessages: !accpectMessage,
+      });
+      setValue("accpectMessage", !accpectMessage);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const switchStatusMutation = useMutation({
+    mutationFn: handleSwitchChange,
+    onError: (error) => {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message || "Something went wrong!");
+      } else {
+        toast.error("Unexpected error");
+      }
+    },
+    onSuccess: (data) => {
+      toast.success(data.data.message || "Cahnge Succesfully");
+      queryClient.invalidateQueries({ queryKey: ["isAccpectings"] });
+    },
+  });
+
+  const fetchStatus = async () => {
     try {
       const res = await axios.get<ApiResponse>("/api/accpect-message");
 
@@ -73,13 +96,9 @@ export const MessageForm = () => {
     }
   };
 
-  const FetchMessage = useCallback(() => {
-    return fetchData();
-  }, [setValue]);
-
   const todoListQuery = useQuery({
     queryKey: ["isAccpectings"],
-    queryFn: FetchMessage,
+    queryFn: fetchStatus,
   });
 
   return (
@@ -94,8 +113,9 @@ export const MessageForm = () => {
                 <FormLabel>Accpect Message</FormLabel>
                 <FormControl>
                   <Switch
+                    {...register("accpectMessage")}
                     checked={field.value}
-                    onCheckedChange={field.onChange}
+                    onCheckedChange={()=> switchStatusMutation.mutate()}
                   />
                 </FormControl>
                 <FormMessage />

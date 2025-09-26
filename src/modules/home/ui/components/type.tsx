@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-export  function TypewriterText() {
+export function TypewriterText() {
   const [text, setText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -47,7 +47,6 @@ export  function TypewriterText() {
   );
 }
 
-
 export function TypewriterTextAnimate() {
   const [text, setText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -56,9 +55,9 @@ export function TypewriterTextAnimate() {
 
   const words = [
     "Analyzing your data with advanced AI algorithms...",
-    "Processing millions of connections in real-time...", 
+    "Processing millions of connections in real-time...",
     "Securing your information with quantum encryption...",
-    "Optimizing performance with machine learning..."
+    "Optimizing performance with machine learning...",
   ];
   const typingSpeed = 80;
   const deletingSpeed = 40;
@@ -105,36 +104,113 @@ export function TypewriterTextAnimate() {
             className="opacity-20"
           />
           <circle cx="18" cy="18" r="2" className="animate-pulse">
-            <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+            <animate
+              attributeName="opacity"
+              values="0.3;1;0.3"
+              dur="2s"
+              repeatCount="indefinite"
+            />
           </circle>
           <circle cx="30" cy="18" r="2" className="animate-pulse">
-            <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+            <animate
+              attributeName="opacity"
+              values="1;0.3;1"
+              dur="2s"
+              repeatCount="indefinite"
+            />
           </circle>
           <circle cx="24" cy="24" r="2" className="animate-pulse">
-            <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite" />
+            <animate
+              attributeName="opacity"
+              values="0.5;1;0.5"
+              dur="1.5s"
+              repeatCount="indefinite"
+            />
           </circle>
           <circle cx="15" cy="26" r="1.5" className="animate-pulse">
-            <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.5s" repeatCount="indefinite" />
+            <animate
+              attributeName="opacity"
+              values="0.2;0.8;0.2"
+              dur="2.5s"
+              repeatCount="indefinite"
+            />
           </circle>
           <circle cx="33" cy="26" r="1.5" className="animate-pulse">
-            <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.5s" repeatCount="indefinite" />
+            <animate
+              attributeName="opacity"
+              values="0.8;0.2;0.8"
+              dur="2.5s"
+              repeatCount="indefinite"
+            />
           </circle>
-          
+
           {/* Connecting lines with animation */}
-          <line x1="18" y1="18" x2="24" y2="24" stroke="currentColor" strokeWidth="1" opacity="0.4">
-            <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite" />
+          <line
+            x1="18"
+            y1="18"
+            x2="24"
+            y2="24"
+            stroke="currentColor"
+            strokeWidth="1"
+            opacity="0.4"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.2;0.6;0.2"
+              dur="3s"
+              repeatCount="indefinite"
+            />
           </line>
-          <line x1="30" y1="18" x2="24" y2="24" stroke="currentColor" strokeWidth="1" opacity="0.4">
-            <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" repeatCount="indefinite" />
+          <line
+            x1="30"
+            y1="18"
+            x2="24"
+            y2="24"
+            stroke="currentColor"
+            strokeWidth="1"
+            opacity="0.4"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.6;0.2;0.6"
+              dur="3s"
+              repeatCount="indefinite"
+            />
           </line>
-          <line x1="24" y1="24" x2="15" y2="26" stroke="currentColor" strokeWidth="1" opacity="0.3">
-            <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.2s" repeatCount="indefinite" />
+          <line
+            x1="24"
+            y1="24"
+            x2="15"
+            y2="26"
+            stroke="currentColor"
+            strokeWidth="1"
+            opacity="0.3"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.1;0.5;0.1"
+              dur="2.2s"
+              repeatCount="indefinite"
+            />
           </line>
-          <line x1="24" y1="24" x2="33" y2="26" stroke="currentColor" strokeWidth="1" opacity="0.3">
-            <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.2s" repeatCount="indefinite" />
+          <line
+            x1="24"
+            y1="24"
+            x2="33"
+            y2="26"
+            stroke="currentColor"
+            strokeWidth="1"
+            opacity="0.3"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.5;0.1;0.5"
+              dur="2.2s"
+              repeatCount="indefinite"
+            />
           </line>
         </svg>
-        
+
         {/* Rotating ring around icon */}
         <div className="absolute inset-0 border-2 border-primary border-t-transparent rounded-full animate-spin opacity-30"></div>
       </div>
@@ -150,7 +226,6 @@ export function TypewriterTextAnimate() {
   );
 }
 
-
 export function TypewriterTextGemini() {
   const [text, setText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -159,9 +234,9 @@ export function TypewriterTextGemini() {
 
   const words = [
     "Analyzing your data with advanced AI algorithms...",
-    "Processing millions of connections in real-time...", 
+    "Processing millions of connections in real-time...",
     "Securing your information with quantum encryption...",
-    "Optimizing performance with machine learning..."
+    "Optimizing performance with machine learning...",
   ];
   const typingSpeed = 80;
   const deletingSpeed = 40;
@@ -192,7 +267,7 @@ export function TypewriterTextGemini() {
   }, [currentIndex, isDeleting, wordIndex, words]);
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex flex-col md:flex-row max-w-sm justify-center items-center gap-4">
       {/* Gemini-style Animated Shape */}
       <div className="relative w-12 h-12">
         <svg
@@ -245,30 +320,70 @@ export function TypewriterTextGemini() {
 
           {/* Inner particles */}
           <circle cx="24" cy="20" r="1" fill="currentColor" opacity="0.4">
-            <animate attributeName="cy" values="20;28;20" dur="2s" repeatCount="indefinite" />
-            <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2s" repeatCount="indefinite" />
+            <animate
+              attributeName="cy"
+              values="20;28;20"
+              dur="2s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.4;0.8;0.4"
+              dur="2s"
+              repeatCount="indefinite"
+            />
           </circle>
           <circle cx="28" cy="24" r="1" fill="currentColor" opacity="0.3">
-            <animate attributeName="cx" values="28;20;28" dur="2.5s" repeatCount="indefinite" />
-            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite" />
+            <animate
+              attributeName="cx"
+              values="28;20;28"
+              dur="2.5s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.3;0.7;0.3"
+              dur="2.5s"
+              repeatCount="indefinite"
+            />
           </circle>
 
           {/* Gradients */}
           <defs>
             <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.3">
-                <animate attributeName="stopColor" values="#3B82F6;#8B5CF6;#06B6D4;#3B82F6" dur="3s" repeatCount="indefinite" />
+                <animate
+                  attributeName="stopColor"
+                  values="#3B82F6;#8B5CF6;#06B6D4;#3B82F6"
+                  dur="3s"
+                  repeatCount="indefinite"
+                />
               </stop>
               <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.1">
-                <animate attributeName="stopColor" values="#8B5CF6;#06B6D4;#3B82F6;#8B5CF6" dur="3s" repeatCount="indefinite" />
+                <animate
+                  attributeName="stopColor"
+                  values="#8B5CF6;#06B6D4;#3B82F6;#8B5CF6"
+                  dur="3s"
+                  repeatCount="indefinite"
+                />
               </stop>
             </linearGradient>
             <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#06B6D4">
-                <animate attributeName="stopColor" values="#06B6D4;#8B5CF6;#3B82F6;#06B6D4" dur="4s" repeatCount="indefinite" />
+                <animate
+                  attributeName="stopColor"
+                  values="#06B6D4;#8B5CF6;#3B82F6;#06B6D4"
+                  dur="4s"
+                  repeatCount="indefinite"
+                />
               </stop>
               <stop offset="100%" stopColor="#8B5CF6">
-                <animate attributeName="stopColor" values="#8B5CF6;#3B82F6;#06B6D4;#8B5CF6" dur="4s" repeatCount="indefinite" />
+                <animate
+                  attributeName="stopColor"
+                  values="#8B5CF6;#3B82F6;#06B6D4;#8B5CF6"
+                  dur="4s"
+                  repeatCount="indefinite"
+                />
               </stop>
             </linearGradient>
           </defs>
@@ -276,8 +391,8 @@ export function TypewriterTextGemini() {
       </div>
 
       {/* Typewriter text */}
-      <div className="flex-1">
-        <p className="text-lg md:text-xl font-medium text-gray-700 leading-relaxed">
+      <div className="flex-1 justify-center items-center text-center">
+        <p className="text-sm md:text-xl font-medium text-gray-700 leading-relaxed">
           {text}
           <span className="animate-pulse text-primary">|</span>
         </p>

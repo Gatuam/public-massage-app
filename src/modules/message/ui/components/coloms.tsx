@@ -2,6 +2,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { MoreHorizontal } from "lucide-react";
+import { format } from "date-fns";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -29,7 +30,12 @@ export const columns: ColumnDef<Message>[] = [
           <DropdownMenuContent align="center">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => {}} className=" text-destructive">
+            <DropdownMenuItem
+              onClick={() => {
+                row.original.deleteOne(row.original.id);
+              }}
+              className=" text-destructive"
+            >
               Delete Message
             </DropdownMenuItem>
             <DropdownMenuItem>View Detail</DropdownMenuItem>
@@ -59,19 +65,36 @@ export const columns: ColumnDef<Message>[] = [
     ),
   },
   {
-    accessorKey: "id",
+    accessorKey: "_id",
     header: "ID",
+    cell: ({ row }) => {
+      const id = row.original._id;
+      return (
+        <span className="font-mono text-sm">
+          {id.toString().slice(0, 6)}...
+        </span>
+      );
+    },
   },
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "content",
+    header: "content",
+    cell: ({ row }) => {
+      const content = row.original.content;
+      return (
+        <span className=" text-sm line-clamp-5">
+          {content?.slice(0, 10)}
+          {content?.length > 10 && "..."}
+        </span>
+      );
+    },
   },
   {
-    accessorKey: "email",
-    header: "Email",
-  },
-  {
-    accessorKey: "amount",
-    header: "Amount",
+    accessorKey: "createdAt",
+    header: "Date",
+    cell: ({ row }) => {
+      const date = row.original.createdAt;
+      return <span>{format(new Date(date), "dd MMM yyyy, HH:mm")}</span>;
+    },
   },
 ];

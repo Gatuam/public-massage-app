@@ -77,14 +77,14 @@ export const Pricing = () => {
         </p>
       </div>
 
-<div className=" w-full flex justify-center items-center md:mt-9 px-4 ">
-     <div className="grid md:grid-cols-3 gap-8 px-6 w-full relative z-10 ">
+<div className=" w-full flex justify-center items-center md:mt-9 px-8">
+     <div className="grid md:grid-cols-3 gap-8 px-6.5 w-full relative z-10 ">
         {plans.map((plan, i) => {
           const IconComponent = plan.icon;
           return (
             <div
               key={i}
-              className={`relative p-8 rounded-3xl border shadow-lg flex flex-col gap-6 transition-all duration-500 cursor-pointer group ${
+              className={`relative p-7 rounded-3xl border shadow-lg flex flex-col gap-6 transition-all duration-500 cursor-pointer group ${
                 plan.highlight 
                   ? "border-primary/30 bg-gradient-to-b from-background to-primary/5 hover:shadow-2xl hover:shadow-primary/20 scale-101 md:scale-110 text-accent-foreground" 
                   : "border-border/50 bg-background/50 backdrop-blur-sm hover:shadow-xl hover:border-border"

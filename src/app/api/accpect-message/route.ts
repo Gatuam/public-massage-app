@@ -9,8 +9,8 @@ export async function POST(req: Request) {
   try {
     await dbConnect();
     const session = await getServerSession(authOptions);
-    const user = session?.user as User;
-    if (!user || !session) {
+    const user = session?.user;
+    if (!user?._id || !session?.user) {
       return NextResponse.json(
         {
           sucess: false,
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-    const userId = user?.id;
+    const userId = user?._id;
     const { accpectMessages } = await req.json();
     const updatedUser = await UserModel.findByIdAndUpdate(
       userId,
@@ -59,8 +59,8 @@ export async function GET(req: Request) {
     await dbConnect();
     const session = await getServerSession(authOptions);
     const user = session?.user as User;
-    console.log(session)
-    console.log(user)
+    console.log(session);
+    console.log(user);
     if (!user || !session?.user) {
       return NextResponse.json(
         {
@@ -73,7 +73,7 @@ export async function GET(req: Request) {
     const userId = user?._id;
 
     const userFound = await UserModel.findById({
-     _id : userId,
+      _id: userId,
     });
 
     if (!userFound) {
