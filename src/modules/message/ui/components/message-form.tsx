@@ -26,8 +26,8 @@ export const MessageForm = () => {
 
   const [messages, setMessages] = useState<Message[]>([]);
 
-  const handleDeletMessage = (messageId: string) => {
-    setMessages(messages.filter((message) => message._id !== messageId));
+  const handleDeletMessage = (id: string) => {
+    setMessages(messages.filter((message) => message._id !== id));
   };
 
   const form = useForm<z.infer<typeof accpectionMessageSchema>>({
@@ -94,7 +94,7 @@ export const MessageForm = () => {
     }
   };
 
-  const todoListQuery = useQuery({
+  useQuery({
     queryKey: ["isAccpectings"],
     queryFn: fetchStatus,
   });

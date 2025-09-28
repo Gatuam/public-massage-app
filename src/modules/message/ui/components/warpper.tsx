@@ -17,10 +17,8 @@ import { DataTable } from "./data-table";
 import { columns } from "./coloms";
 import { Loader } from "lucide-react";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
 
 export const Warpper = () => {
-  const [message, setMessages] = useState<Message[]>([]);
   const { data: session } = useSession();
   const fetchMessages = async () => {
     try {

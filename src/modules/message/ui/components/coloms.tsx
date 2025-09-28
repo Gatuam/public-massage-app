@@ -27,23 +27,34 @@ const handleDelete = async (id: string) => {
 
 function DeleteAction({ id }: { id: string }) {
   const queryClient = useQueryClient();
+
   const deleteMutation = useMutation({
     mutationFn: handleDelete,
+    onMutate: async (id: string) => {
+      await queryClient.cancelQueries({ queryKey: ["messages"] });
+
+      const previous = queryClient.getQueryData<Message[]>(["messages"]);
+
+      queryClient.setQueryData<Message[]>(["messages"], (old) =>
+        old?.filter((msg) => msg._id !== id)
+      );
+
+      return { previous };
+    },
+    onError: (err: any, id, context: any) => {
+      if (context?.previous) {
+        queryClient.setQueryData(["messages"], context.previous);
+      }
+      toast.error(err.message ?? "Failed to delete");
+    },
     onSuccess: (data) => {
       toast.success(data?.message ?? "Deleted");
-      queryClient.invalidateQueries({ queryKey: ["messages"] });
-    },
-    onError: (err: any) => {
-      toast.error(err.message ?? "Failed to delete");
     },
   });
 
   return (
     <DropdownMenuItem
-      onClick={() => {
-        deleteMutation.mutate(id)
-        
-      }}
+      onClick={() => deleteMutation.mutate(id)}
       className="text-destructive"
     >
       Delete Message
@@ -51,7 +62,7 @@ function DeleteAction({ id }: { id: string }) {
   );
 }
 
-export const columns: ColumnDef<Message>[] =  [
+export const columns: ColumnDef<Message>[] = [
   {
     id: "actions",
     cell: ({ row }) => (
