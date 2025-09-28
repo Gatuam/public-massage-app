@@ -93,7 +93,7 @@ export function DataTable<TData, TValue>({
                     <Loader className=" animate-spin" />
                     <Button
                       onClick={() => {
-                        router.push('/send-message')
+                        router.push("/send-message");
                       }}
                       className="h-8 bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl z-30"
                     >

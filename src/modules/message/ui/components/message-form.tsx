@@ -86,8 +86,6 @@ export const MessageForm = () => {
         toast.success("User is not accpecting the message");
       }
 
-      console.log(res);
-
       return res;
     } catch (error: any) {
       toast.error(error?.message || "Something went wrong!");

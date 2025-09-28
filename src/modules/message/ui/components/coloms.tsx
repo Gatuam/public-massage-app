@@ -3,7 +3,6 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { MoreHorizontal } from "lucide-react";
 import { format } from "date-fns";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -14,35 +13,63 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Message } from "@/model/user";
+import axios from "axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 
-export const columns: ColumnDef<Message>[] = [
+const handleDelete = async (id: string) => {
+  const res = await axios.delete(`/api/delete-message/${id}`);
+  console.log(res);
+  if (!res.data.ok) throw new Error(res.data.message);
+
+  return res.data;
+};
+
+function DeleteAction({ id }: { id: string }) {
+  const queryClient = useQueryClient();
+  const deleteMutation = useMutation({
+    mutationFn: handleDelete,
+    onSuccess: (data) => {
+      toast.success(data?.message ?? "Deleted");
+      queryClient.invalidateQueries({ queryKey: ["messages"] });
+    },
+    onError: (err: any) => {
+      toast.error(err.message ?? "Failed to delete");
+    },
+  });
+
+  return (
+    <DropdownMenuItem
+      onClick={() => {
+        deleteMutation.mutate(id)
+        
+      }}
+      className="text-destructive"
+    >
+      Delete Message
+    </DropdownMenuItem>
+  );
+}
+
+export const columns: ColumnDef<Message>[] =  [
   {
     id: "actions",
-    cell: ({ row }) => {
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="center">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => {
-                row.original.deleteOne(row.original.id);
-              }}
-              className=" text-destructive"
-            >
-              Delete Message
-            </DropdownMenuItem>
-            <DropdownMenuItem>View Detail</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    },
+    cell: ({ row }) => (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="h-8 w-8 p-0">
+            <span className="sr-only">Open menu</span>
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="center">
+          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DeleteAction id={row.original._id} />
+          <DropdownMenuItem>View Detail</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    ),
   },
   {
     id: "select",
@@ -78,11 +105,11 @@ export const columns: ColumnDef<Message>[] = [
   },
   {
     accessorKey: "content",
-    header: "content",
+    header: "Content",
     cell: ({ row }) => {
       const content = row.original.content;
       return (
-        <span className=" text-sm line-clamp-5">
+        <span className="text-sm line-clamp-5">
           {content?.slice(0, 10)}
           {content?.length > 10 && "..."}
         </span>

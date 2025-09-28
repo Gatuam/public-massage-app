@@ -7,6 +7,13 @@ export async function POST(req: Request) {
     await dbConnect();
     const { username, content } = await req.json();
 
+    if(!username || !content){
+      return NextResponse.json({
+        success : false,
+        message : 'User name and content are required'
+      }, { status : 403})
+    }
+
     const existingUser = await UserModel.findOne({
       username,
     });
@@ -43,7 +50,7 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         sucess: false,
-        message: "error while sending message ",
+        message: "error while sending message " + error,
       },
       { status: 500 }
     );
