@@ -4,7 +4,7 @@ import authOptions from "../../auth/[...nextauth]/options";
 import { NextResponse } from "next/server";
 import { UserModel } from "@/model/user";
 
-export async function DELETE(
+export async function POST(
   req: Request,
   { params }: { params: { id: string } }
 ) {

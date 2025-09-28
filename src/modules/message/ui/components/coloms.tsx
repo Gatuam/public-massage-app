@@ -18,7 +18,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 const handleDelete = async (id: string) => {
-  const res = await axios.delete(`/api/delete-message/${id}`);
+  const res = await axios.post(`/api/delete-message/${id}`);
   console.log(res);
   if (!res.data.ok) throw new Error(res.data.message);
 
