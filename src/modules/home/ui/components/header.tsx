@@ -8,9 +8,12 @@ import { nav } from "@/const";
 import { MenuIcon } from "lucide-react";
 import { ModeToggle } from "@/components/global/mode-toggle";
 import { SheetTrigger } from "@/components/ui/sheet";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export const Header = () => {
+  const router = useRouter()
+  const session  = useSession()
   const [open, setOpen] = useState(false);
 
   return (
@@ -59,7 +62,7 @@ export const Header = () => {
         </div>
 
         <div className=" flex  justify-center items-center gap-2">
-          <Button
+          {session?.data?.user && <Button
           onClick={()=> {
             signOut()
           }}
@@ -67,7 +70,16 @@ export const Header = () => {
             size={"sm"}
           >
             Sign Out
-          </Button>
+          </Button>}
+           {!session?.data?.user && <Button
+          onClick={()=> {
+            router.push('/sign-in')
+          }}
+            className=" hidden md:block bg-gradient-to-b from-primary to-chart-3 drop-shadow-2xl"
+            size={"sm"}
+          >
+            Sign In
+          </Button>}
           <ModeToggle />
         </div>
       </div>

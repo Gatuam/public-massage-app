@@ -16,10 +16,10 @@ export async function middleware(request: NextRequest) {
 
   if (
     !token &&
-    (url.pathname.startsWith("/dashboard") ||
+    (url.pathname.startsWith("/send-message") ||
       url.pathname.startsWith("/messages") ||
       url.pathname.startsWith("/settings") ||
-      url.pathname === "/")
+      url.pathname.startsWith("/profile"))
   ) {
     return NextResponse.redirect(new URL("/sign-in", request.url));
   }
@@ -30,10 +30,10 @@ export const config = {
   matcher: [
     "/sign-in",
     "/sign-up",
-    "/dashboard/:path*",
+    "/send-message/:path*",
     "/verify/:path*",
-    "/",
     "/settings",
     "/messages",
+    "/profile",
   ],
 };
